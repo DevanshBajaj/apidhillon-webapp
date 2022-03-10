@@ -44,11 +44,11 @@ export default function Home({ data }) {
             let re = /(https?:\/\/)?((www\.)?(youtube(-nocookie)?|youtube.googleapis)\.com.*(v\/|v=|vi=|vi\/|e\/|embed\/|user\/.*\/u\/\d+\/)|youtu\.be\/)([_0-9a-z-]+)/i;
             let id = ap.video_link.match(re)[7];
             return (
-              <Grid xs={8} sm={6} md={4}>
+              <Grid xs={8} sm={6} md={4} key={index}>
                 <Card bordered shadow={false} hoverable css={{ mw: "400px" }} key={index}>
-                  <p>{ap.title}</p>
-                  <p>{ap.singer.join(' , ')}</p>
-                  <p>{ap.lyricist.join(' , ')}</p>
+                  <p>Song ↪   {ap.title}</p>
+                  <p>Singer ↪ {ap.singer.join(' , ')}</p>
+                  <p>Lyricist ↪ {ap.lyricist.join(' , ')}</p>
                   <Button auto flat color="error" onClick={handler}>
                     Youtube Player
                   </Button>
