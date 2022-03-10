@@ -45,10 +45,11 @@ export default function Home({ data }) {
             let id = ap.video_link.match(re)[7];
             return (
               <Grid xs={8} sm={6} md={4} key={index}>
-                <Card bordered shadow={false} hoverable css={{ mw: "400px" }} key={index}>
+                <Card bordered shadow={false} hoverable css={{ mw: "100%" }} key={index}>
                   <p>Song ↪   {ap.title}</p>
                   <p>Singer ↪ {ap.singer.join(' , ')}</p>
                   <p>Lyricist ↪ {ap.lyricist.join(' , ')}</p>
+                  <a href={ap.video_link} className={styles.description}>Youtube Link</a>
                   <Button auto flat color="error" onClick={handler}>
                     Youtube Player
                   </Button>
@@ -70,7 +71,7 @@ export default function Home({ data }) {
                       </Text>
                     </Modal.Header>
                     <Modal.Body>
-                      <iframe width="100%" height="100%"
+                      <iframe width="100%" height="80%"
                         src={`https://www.youtube.com/embed/${id}?controls=1`}>
                       </iframe>
                     </Modal.Body>

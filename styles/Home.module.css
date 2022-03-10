@@ -50,15 +50,9 @@
   font-size: 4rem;
 }
 
-.title,
 .description {
-  text-align: center;
-}
-
-.description {
-  margin: 4rem 0;
-  line-height: 1.5;
-  font-size: 1.5rem;
+  margin: 0.4rem 0;
+  color: #0070f3;
 }
 
 .code {
