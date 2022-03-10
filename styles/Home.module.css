@@ -15,19 +15,23 @@
 
 .footer {
   display: flex;
-  flex: 1;
-  padding: 2rem 0;
+  flex-direction: column;
+  padding: 0;
   border-top: 1px solid #eaeaea;
   justify-content: center;
   align-items: center;
 }
 
-.footer a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-grow: 1;
+.footer p {
+  margin: 0.4rem;
 }
+
+.footer a {
+  color: #2581eb;
+  padding: 0;
+  margin: 0;
+}
+
 
 .title a {
   color: #0070f3;
