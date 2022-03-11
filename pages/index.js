@@ -22,14 +22,6 @@ export async function getStaticProps() {
 
 export default function Home({ data }) {
 
-
-  const [visible, setVisible] = React.useState(false);
-  const handler = () => setVisible(true);
-  const closeHandler = () => {
-    setVisible(false);
-    console.log('closed');
-  };
-
   return (
     <div className={styles.container}>
       <Head>
@@ -41,8 +33,6 @@ export default function Home({ data }) {
         <Grid.Container gap={2} justify="center">
           <Navbar />
           {data.map((ap, index) => {
-            let re = /(https?:\/\/)?((www\.)?(youtube(-nocookie)?|youtube.googleapis)\.com.*(v\/|v=|vi=|vi\/|e\/|embed\/|user\/.*\/u\/\d+\/)|youtu\.be\/)([_0-9a-z-]+)/i;
-            let id = ap.video_link.match(re)[7];
             return (
               <Grid xs={8} sm={6} md={4} key={index}>
                 <Card bordered shadow={false} hoverable css={{ mw: "100%" }} key={index}>
@@ -50,34 +40,14 @@ export default function Home({ data }) {
                   <p>Singer ↪ {ap.singer.join(' , ')}</p>
                   <p>Lyricist ↪ {ap.lyricist.join(' , ')}</p>
                   <a href={ap.video_link} className={styles.description}>Youtube Link</a>
-                  <Button auto flat color="error" onClick={handler}>
-                    Youtube Player
-                  </Button>
-                  <Modal
-                    scroll
-                    fullScreen
-                    closeButton
-                    blur
-                    aria-labelledby="Youtube Player"
-                    open={visible}
-                    onClose={closeHandler}
-                  >
-                    <Modal.Header>
-                      <Text id="modal-title" size={18}>
-                        Play &nbsp;
-                        <Text b size={18}>
-                          {ap.title}
-                        </Text>
-                      </Text>
-                    </Modal.Header>
-                    <Modal.Body>
+
+                  <Collapse.Group splitted>
+                    <Collapse title={`Play ${ap.title}`} expanded>
                       <iframe width="100%" height="80%"
-                        src={`https://www.youtube.com/embed/${id}?controls=1`}>
+                        src={`${ap.video_link.replace('/watch?v=', '/embed/')}?controls=1`}>
                       </iframe>
-                    </Modal.Body>
-                    <Modal.Footer>
-                    </Modal.Footer>
-                  </Modal>
+                    </Collapse>
+                  </Collapse.Group>
                 </Card>
               </Grid>
             )
@@ -85,10 +55,9 @@ export default function Home({ data }) {
         </Grid.Container>
       </div>
 
-
       <footer className={styles.footer}>
         <p>Made by <a href="https://github.com/DevanshBajaj">Devansh Bajaj</a></p>
-        <p>Thanks to Abhishek for<a href='https://github.com/akaushik759/api-dhillon'>API</a></p>
+        <p>Thanks to Abhishek for the <a href='https://github.com/akaushik759/api-dhillon'>API</a></p>
       </footer>
     </div >
   )
