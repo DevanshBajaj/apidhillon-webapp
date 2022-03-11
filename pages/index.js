@@ -30,9 +30,11 @@ export default function Home({ data }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className={styles.main}>
-        <Grid.Container gap={2} justify="center">
+        <Grid.Container gap={1} justify="center">
           <Navbar />
           {data.map((ap, index) => {
+
+            let ytEmbeded = ap.video_link.replace('/watch?v=', '/embed/')
             return (
               <Grid xs={8} sm={6} md={4} key={index}>
                 <Card bordered shadow={false} hoverable css={{ mw: "100%" }} key={index}>
@@ -42,9 +44,9 @@ export default function Home({ data }) {
                   <a href={ap.video_link} className={styles.description}>Youtube Link</a>
 
                   <Collapse.Group splitted>
-                    <Collapse title={`Play ${ap.title}`} expanded>
+                    <Collapse title={`Play ${ap.title}`}>
                       <iframe width="100%" height="80%"
-                        src={`${ap.video_link.replace('/watch?v=', '/embed/')}?controls=1`}>
+                        src={`${ytEmbeded}?controls=1`}>
                       </iframe>
                     </Collapse>
                   </Collapse.Group>
