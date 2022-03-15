@@ -3,7 +3,7 @@ import React from 'react'
 import Image from 'next/image'
 import Navbar from '../components/Navbar'
 import styles from '../styles/Home.module.css'
-import { Collapse, Button, Modal, Text, Grid, Card } from '@nextui-org/react';
+import { Link, Collapse, Button, Modal, Text, Grid, Card } from '@nextui-org/react';
 
 export async function getStaticProps() {
   const res = await fetch(`https://api-dhillon.deta.dev/`)
@@ -38,10 +38,12 @@ export default function Home({ data }) {
             return (
               <Grid xs={8} sm={6} md={4} key={index}>
                 <Card bordered shadow={false} hoverable css={{ mw: "100%" }} key={index}>
-                  <p>Song ↪   {ap.title}</p>
-                  <p>Singer ↪ {ap.singer.join(' , ')}</p>
-                  <p>Lyricist ↪ {ap.lyricist.join(' , ')}</p>
-                  <a href={ap.video_link} className={styles.description}>Youtube Link</a>
+                  <Text margin="1rem 0">
+                    <Text>Song ↪   {ap.title}</Text>
+                    <Text>Singer ↪ {ap.singer.join(' , ')}</Text>
+                    <Text>Lyricist ↪ {ap.lyricist.join(' , ')}</Text>
+                  </Text>
+                  <Link href={ap.video_link} color="primary" className={styles.description}>Youtube Link</Link>
 
                   <Collapse.Group splitted>
                     <Collapse title={`Play ${ap.title}`}>
@@ -58,8 +60,8 @@ export default function Home({ data }) {
       </div>
 
       <footer className={styles.footer}>
-        <p>Made by <a href="https://github.com/DevanshBajaj">Devansh Bajaj</a></p>
-        <p>Thanks to Abhishek for the <a href='https://github.com/akaushik759/api-dhillon'>API</a></p>
+        <p>Made by <Link href="https://github.com/DevanshBajaj">Devansh Bajaj</Link></p>
+        <p>Thanks to Abhishek for the <Link href='https://github.com/akaushik759/api-dhillon'>API</Link></p>
       </footer>
     </div >
   )
