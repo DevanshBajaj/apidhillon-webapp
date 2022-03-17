@@ -29,9 +29,10 @@ export default function Home({ data }) {
         <meta name="Catalog sorta" content="thanks to apidhillon" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Navbar />
       <div className={styles.main}>
+        <Text margin="0rem" h3>AP Dhillon Discography</Text>
         <Grid.Container gap={1} justify="center">
-          <Navbar />
           {data.map((ap, index) => {
 
             let ytEmbeded = ap.video_link.replace('/watch?v=', '/embed/')
