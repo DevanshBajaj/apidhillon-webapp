@@ -32,12 +32,12 @@ export default function Home({ data }) {
       <Navbar />
       <div className={styles.main}>
         <Text margin="0rem" h3>AP Dhillon Discography</Text>
-        <Grid.Container gap={1} justify="center">
+        <Grid.Container gap={2} justify="center">
           {data.map((ap, index) => {
 
             let ytEmbeded = ap.video_link.replace('/watch?v=', '/embed/')
             return (
-              <Grid xs={8} sm={6} md={4} key={index}>
+              <Grid xs={12} sm={6} md={4} key={index}>
                 <Card bordered shadow={false} hoverable css={{ mw: "100%" }} key={index}>
                   <Text margin="1rem 0">
                     <Text>Song ↪   {ap.title}</Text>
@@ -46,8 +46,8 @@ export default function Home({ data }) {
                   </Text>
                   <Link href={ap.video_link} color="primary" className={styles.description}>Youtube Link</Link>
 
-                  <Collapse.Group splitted>
-                    <Collapse title={`Play ${ap.title}`}>
+                  <Collapse.Group>
+                    <Collapse css={{ mw: "100%" }} title={`Play ${ap.title}`}>
                       <iframe width="100%" height="80%"
                         src={`${ytEmbeded}?controls=1`}>
                       </iframe>
